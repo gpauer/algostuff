@@ -13,7 +13,6 @@ import java.util.ArrayList;
 @NoArgsConstructor
 public class DataResponse {
     private String algo;
-    private String complexity;
     private long timeInMillis;
-    private ArrayList<String> data;
+    private ArrayList<Integer> data;
 }

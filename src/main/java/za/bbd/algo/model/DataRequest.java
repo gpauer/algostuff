@@ -13,5 +13,5 @@ import java.util.ArrayList;
 @NoArgsConstructor
 public class DataRequest {
     private String algo;
-    private ArrayList<String> data;
+    private ArrayList<Integer> data;
 }
