@@ -14,5 +14,7 @@ import java.util.ArrayList;
 public class DataResponse {
     private String algo;
     private long timeInMillis;
+    private String timeComplexity;
+    private String memoryMBString;
     private ArrayList<Integer> data;
 }
