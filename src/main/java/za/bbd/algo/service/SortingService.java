@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.bbd.algo.strategy.SortingStrategy;
 import za.bbd.algo.strategy.SortingStrategyFactory;
+import za.bbd.algo.model.DataResponse; 
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
 import java.lang.management.MemoryUsage;
+import java.util.ArrayList;
 
 @Service
 public class SortingService {
@@ -19,7 +21,7 @@ public class SortingService {
         this.sortingStrategyFactory = sortingStrategyFactory;
     }
 
-    public Result sortWithAlgorithm(int[] numbers, String algorithm) {
+    public DataResponse sortWithAlgorithm(int[] numbers, String algorithm) {
         SortingStrategy sortingStrategy = sortingStrategyFactory.getSortingStrategy(algorithm);
 
         long startTime = System.nanoTime();
@@ -29,17 +31,28 @@ public class SortingService {
 
         String timeComplexity = getDefaultTimeComplexity(algorithm);
 
-        // MeasureS memory usage in MB
+        // Measure memory usage
         MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
         MemoryUsage heapMemoryUsage = memoryBean.getHeapMemoryUsage();
         long usedMemoryBytes = heapMemoryUsage.getUsed();
         String usedMemoryMB = (usedMemoryBytes / (1024 * 1024)) + " MB";
 
-        return new Result(sortedArray, timeComplexity, executionTime, usedMemoryMB);
+        DataResponse response = new DataResponse();
+        ArrayList<Integer> sortedArrayList = new ArrayList<>();
+        for (Integer element : sortedArray) {
+        	sortedArrayList.add(element);
+        }
+        response.setAlgo(algorithm);
+        response.setTimeInMillis(executionTime / 1_000_000); 
+        response.setMemoryMBString(usedMemoryMB);
+        response.setData(sortedArrayList);
+        response.setTimeComplexity(timeComplexity);
+
+        return response;
     }
 
     private String getDefaultTimeComplexity(String algorithm) {
-     
+        // Define default time complexities for known sorting algorithms
         switch (algorithm) {
             case "linear":
                 return "O(n)";
@@ -53,7 +66,4 @@ public class SortingService {
                 return "Unknown"; // Default for unknown algorithms
         }
     }
-
-    // Inner class for SortingResult
-    public record Result(int[] sortedArray, String timeComplexity, long executionTime, String usedMemoryMB) { }
 }
