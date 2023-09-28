@@ -5,21 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sort it Out</title>
   <script src="script.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
   <h1>Sort it Out</h1>
   <main>
-    <ul id="algo-list"></ul>
-    <input type="file" id="upload" name="upload" accept="text/csv" />
-    <input type="button" id="submit-button"/>
-  <main>
-
-  <template id="algo-card-template">
-    <section>
-      <strong id="algo-name">Algorithm</strong>
-      <p id="description">About</p>
+    <section class="algo-list" id="algo-list"></section>
+    <section class="submission">
+      <input type="file" id="upload" name="upload" accept="text/csv" />
+      <input type="button" id="submit-button" value="Sort!"/>
     </section>
-  </template>
-  
+  <main>
 </body>
 </html>

@@ -2,10 +2,11 @@
 let data = undefined
 
 function algo_card(details) {
-  card = document.createElement('lo');
-  title = document.createElement('strong');
-  desc = document.createElement('p');
+  let card = document.createElement('article');
+  let title = document.createElement('strong');
+  let desc = document.createElement('p');
 
+  card.classList.add('card')
   card.onclick = () => {
     console.log('use: ', details.route)
   }
@@ -19,18 +20,16 @@ function algo_card(details) {
   return card;
 }
 
-
 const getAlgorithmDetails = () => {
   return fetch('/algo_config.json')
 }
 
 const showAlgorithmDetails = async () => {
-  detailList = await (await getAlgorithmDetails()).json();
-  listSection = document.getElementById('algo-list');
+  const detailList = await (await getAlgorithmDetails()).json();
+  const listSection = document.getElementById('algo-list');
 
-  for(algo of detailList) {
-    listSection.appendChild(new algo_card(algo))
-
+  for(let algo of detailList) {
+    listSection.appendChild(algo_card(algo))
   }
 }
 
