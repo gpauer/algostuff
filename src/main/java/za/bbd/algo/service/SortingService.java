@@ -8,6 +8,7 @@ import za.bbd.algo.strategy.SortingStrategyFactory;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
 import java.lang.management.MemoryUsage;
+import za.bbd.Constants;
 
 @Service
 public class SortingService {
@@ -41,13 +42,13 @@ public class SortingService {
     private String getDefaultTimeComplexity(String algorithm) {
      
         switch (algorithm) {
-            case "linear":
+            case Constants.LINEAR_SORT:
                 return "O(n)";
-            case "quick":
+            case Constants.QUICK_SORT:
                 return "O(n log n)";
-            case "bubble":
+            case Constants.BUBBLE_SORT:
                 return "O(n^2)";
-            case "insertion":
+            case Constants.INSERTION_SORT:
                 return "O(n^2)";
             default:
                 return "Unknown"; // Default for unknown algorithms
