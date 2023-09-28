@@ -2,13 +2,11 @@
   {
     "name": "Bubble Sort",
     "complexity": "O(n^2)",
-    "description": "about bubble sort",
-    "route": "/bubble"
+    "description": "about bubble sort"
   },
   {
     "name": "Insertion Sort",
     "complexity": "O(n^2)",
-    "description": "about insertion sort",
-    "route": "/insertion"
+    "description": "about insertion sort"
   }
 ]
