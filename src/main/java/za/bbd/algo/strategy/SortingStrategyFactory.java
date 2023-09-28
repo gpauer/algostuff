@@ -12,10 +12,10 @@ public class SortingStrategyFactory {
     public SortingStrategyFactory() {
         this.strategyMap = new HashMap<>();
        
-        strategyMap.put("bubbleSort", new BubbleSort());
-        strategyMap.put("quickSort", new QuickSort());
-        strategyMap.put("insertionSort", new InsertionSort());
-        strategyMap.put("linearSort", new LinearSort());
+        strategyMap.put("bubble", new BubbleSort());
+        strategyMap.put("quick", new QuickSort());
+        strategyMap.put("insertion", new InsertionSort());
+        strategyMap.put("linear", new LinearSort());
        
     }
 
