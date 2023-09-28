@@ -1,9 +1,30 @@
+function showResult(result) {
 
-let data = undefined
+  const algo = result.algo;
+  const time = result.timeMillis;
+  const data = result.data;
 
+  let result_card = document.createElement('article');
+  let title = document.createElement('strong');
+  let time_p = document.createElement('p');
+  let algo_p = document.createElement('p');
+  let save_button = document.createElement('button');
+  let data_ta = document.createElement('textarea')
 
-function showResult() {
-  
+  time_p.innerText = `Time Spent: ${time}ms`;
+  algo_p.innerText = `Algorithm Used: ${algo}`;
+  title.innerText = "Sorting Complete";
+  save_button.innerText = "hello"
+  data_ta.innerText = data;
+
+  result_card.appendChild(title);
+  result_card.appendChild(algo_p);
+  result_card.appendChild(time_p);
+  result_card.appendChild(data_ta);
+
+  result_card.classList.add('card')
+  console.log(document.getElementById('result-section'))
+  document.getElementById('result-section').appendChild(result_card)
 }
 
 async function getFileContent() {
@@ -29,20 +50,24 @@ function algo_card(details) {
   card.classList.add('card')
   
   card.onclick = async () => {
-    const content = await getFileContent();
-    console.log(content)
-    
-    fetch('/sort', {
-      method: "POST",
-      body: {
-        algo: details.name, 
-        data: content
-      }
-    }).then(response => {
-      response.json(result => {
-        showResponse(result)
+    try {
+      const content = await getFileContent();
+      console.log(content)
+      
+      fetch('/sort', {
+        method: "POST",
+        body: {
+          algo: details.name, 
+          data: content
+        }
+      }).then(response => {
+        response.json(result => {
+          showResult(result)
+        })
       })
-    })
+    } catch {
+      alert('choose a valid file');
+    }
   }
 
   title.innerText = details.name;
@@ -65,6 +90,20 @@ const showAlgorithmDetails = async () => {
   for(let algo of detailList) {
     listSection.appendChild(algo_card(algo))
   }
+
+  document.getElementById('document')
+
 }
 
 showAlgorithmDetails()
+
+console.log(document.getElementById('upload'))
+const file_input = document.getElementById('upload')
+file_input.onchange = () => {
+  document.getElementById('file-name').innerText = `File Selected: ${file_input.value}`
+}
+showResult({
+  algo: 'algo1',  
+  timeMillis: 123,
+  data: 'wf, fw, eg'
+})

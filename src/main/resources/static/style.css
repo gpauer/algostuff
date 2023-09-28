@@ -4,31 +4,71 @@
 }
 
 .algo-list {
-  
-  background-color: #AED2FF;
-  min-width: 30%;
+  display: flex;
+  flex-direction: column;
+  min-width: 50%;
   height: 100%; 
   overflow-y: auto;
   overflow-x: hidden;
 }
 
 .card {
-  background-color: #9500ff85;
-  border-radius: 1rem;
-  padding: 1rem;
-  border-width: 10px;
-  border-color: #b957ffb6;
-  margin: 0;
+  display: flex;
+  flex-direction: column  ;
+  border-radius: 10px;
+  padding: 0.1rem;
+  border-width: 2px;
+  border-color: #000000b6;
+  border-style: dashed;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   width: 90%;
 }
 
+.card * {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.center-h {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .submission {
-  min-width: 70%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 25%
+}
+
+.result {
+  height: 100%;
+  min-width: 50%;
+}
+
+.result .card * {
+  font-size: medium;
+}
+
+.left {
+  min-width: 50%;
   display: flex;
   flex-direction: column;
 }
 
-input {
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
   width: 50%;
   margin-left: auto;
   margin-right: auto;
@@ -36,18 +76,22 @@ input {
   margin-bottom: auto;
 }
 
+textarea {
+  min-width: 90%;
+  max-width: 90%;
+}
+
 main {
   display: flex;
   flex-direction: horizontal;
   width: 90%;
-  background-color: #9500ffaf;
   margin-left: auto;
   margin-right: auto;
   height: 90%;
+  border-radius: 1rem;
 }
 
 body {
-  background-color: #27005da4;
 
   display: flex;
   flex-direction: column;
@@ -58,4 +102,9 @@ html {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
 }
