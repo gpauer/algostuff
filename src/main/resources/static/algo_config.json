@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Bubble Sort",
+    "complexity": "O(n^2)",
+    "description": "about bubble sort",
+    "route": "/bubble"
+  },
+  {
+    "name": "Insertion Sort",
+    "complexity": "O(n^2)",
+    "description": "about insertion sort",
+    "route": "/insertion"
+  }
+]
