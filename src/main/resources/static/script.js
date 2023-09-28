@@ -56,16 +56,19 @@ function algo_card(details) {
       
       fetch('/sort', {
         method: "POST",
-        body: {
+        headers: new Headers({'content-type': 'application/json'}),
+        body: JSON.stringify({
           algo: details.name, 
-          data: content
-        }
+          data: content.split(',')
+        }),
       }).then(response => {
+        console.log(response)
         response.json(result => {
           showResult(result)
         })
       })
-    } catch {
+    } catch(error) {
+      console.log(error)
       alert('choose a valid file');
     }
   }

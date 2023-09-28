@@ -10,8 +10,9 @@ import za.bbd.algo.model.DataResponse;
 
 @RestController
 public class DataController {
-    @GetMapping("compute")
+    @PostMapping("sort")
     public ResponseEntity<DataResponse> sortData(@RequestBody DataRequest dataRequest) {
+        System.out.println(dataRequest);
         return ResponseEntity.ok().build();
     }
 }
