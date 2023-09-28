@@ -30,13 +30,6 @@
                     <systemPath>${project.basedir}/src/main/resources/jarfile</systemPath>
                 </dependency> -->
 		<dependency>
-			<groupId>com.thealgorithms</groupId>
-			<artifactId>Java</artifactId>
-			<version>1.0-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>C:\Users\paueg001\Documents\algostuff\Java-1.0-SNAPSHOT.jar</systemPath>
-		</dependency>
-		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>

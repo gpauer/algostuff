@@ -1,8 +1,10 @@
 package za.bbd.algo.strategy;
 
 import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
+import za.bbd.Constants;
 
 @Component
 public class SortingStrategyFactory {
@@ -12,10 +14,10 @@ public class SortingStrategyFactory {
     public SortingStrategyFactory() {
         this.strategyMap = new HashMap<>();
        
-        strategyMap.put("bubble", new BubbleSort());
-        strategyMap.put("quick", new QuickSort());
-        strategyMap.put("insertion", new InsertionSort());
-        strategyMap.put("linear", new LinearSort());
+        strategyMap.put(Constants.BUBBLE_SORT, new BubbleSort());
+        strategyMap.put(Constants.QUICK_SORT, new QuickSort());
+        strategyMap.put(Constants.INSERTION_SORT, new InsertionSort());
+        strategyMap.put(Constants.LINEAR_SORT, new LinearSort());
        
     }
 

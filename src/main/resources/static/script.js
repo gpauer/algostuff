@@ -1,8 +1,9 @@
 function showResult(result) {
 
   const algo = result.algo;
-  const time = result.timeMillis;
+  const time = result.timeInMillis;
   const data = result.data;
+  const comp = result.timeComplexity;
 
   let result_card = document.createElement('article');
   let title = document.createElement('strong');
@@ -10,17 +11,20 @@ function showResult(result) {
   let algo_p = document.createElement('p');
   let save_button = document.createElement('button');
   let data_ta = document.createElement('textarea')
+  let complexity_p = document.createElement('p')
 
   time_p.innerText = `Time Spent: ${time}ms`;
   algo_p.innerText = `Algorithm Used: ${algo}`;
   title.innerText = "Sorting Complete";
-  save_button.innerText = "hello"
   data_ta.innerText = data;
+  complexity_p.innerText = comp;
 
   result_card.appendChild(title);
-  result_card.appendChild(algo_p);
+  result_card.appendChild(algo_p);  
+  result_card.appendChild(complexity_p);  
   result_card.appendChild(time_p);
   result_card.appendChild(data_ta);
+
 
   result_card.classList.add('card')
   console.log(document.getElementById('result-section'))
@@ -47,7 +51,8 @@ function algo_card(details) {
   let title = document.createElement('strong');
   let desc = document.createElement('p');
 
-  card.classList.add('card')
+  card.classList.add('card');
+  card.id = details.name;
   
   card.onclick = async () => {
     try {
@@ -56,16 +61,14 @@ function algo_card(details) {
       
       fetch('/sort', {
         method: "POST",
-        body: {
+        headers: new Headers({'content-type': 'application/json'}),
+        body: JSON.stringify({
           algo: details.name, 
-          data: content
-        }
-      }).then(response => {
-        response.json(result => {
-          showResult(result)
-        })
-      })
-    } catch {
+          data: content.split(',')
+        }),
+      }).then(response => response.json()).then(result => showResult(result))
+    } catch(error) {
+      console.log(error)
       alert('choose a valid file');
     }
   }
@@ -102,8 +105,3 @@ const file_input = document.getElementById('upload')
 file_input.onchange = () => {
   document.getElementById('file-name').innerText = `File Selected: ${file_input.value}`
 }
-showResult({
-  algo: 'algo1',  
-  timeMillis: 123,
-  data: 'wf, fw, eg'
-})

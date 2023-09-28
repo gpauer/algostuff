@@ -6,12 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import za.bbd.algo.model.DataRequest;
 import za.bbd.algo.model.DataResponse;
+import za.bbd.algo.service.SortingService;
 
 
 @RestController
 public class DataController {
-    @GetMapping("compute")
+
+    SortingService service;
+    @PostMapping("sort")
     public ResponseEntity<DataResponse> sortData(@RequestBody DataRequest dataRequest) {
-        return ResponseEntity.ok().build();
+        DataResponse response = service.sortWithAlgorithm(dataRequest);
+        System.out.println(dataRequest);
+        System.out.println(response);
+        return ResponseEntity.ok(response);
+    }
+
+    //@Autowired
+    public DataController(SortingService service){
+        this.service = service;
     }
 }
