@@ -108,21 +108,21 @@ class AlgoApplicationTests {
 		}
 	}
 
-	/**
 	@Test
 	public void Stress() throws Exception {
 		ArrayList<DataResponse> responses = new ArrayList<>();
-		String[] sorts = { Constants.BUBBLE_SORT, Constants.INSERTION_SORT, Constants.LINEAR_SORT, Constants.QUICK_SORT };
+		String[] sorts = {Constants.INSERTION_SORT, Constants.LINEAR_SORT, Constants.QUICK_SORT };
 		File myObj = new File("C:\\Users\\hewit\\BBD\\algostuff\\test.csv");
 		Scanner myReader = new Scanner(myObj);
 		String data = myReader.nextLine();
 		ArrayList<Integer> intList = new ArrayList<>();
-		for (int i = 0; i < 1000; i ++) {
-			responses.clear();
-			for (String dataPoint : data.split(",")){
-				intList.add(Integer.parseInt(dataPoint));
-			}
-			myReader.close();
+		responses.clear();
+		for (String dataPoint : data.split(",")){
+			intList.add(Integer.parseInt(dataPoint));
+		}
+		myReader.close();
+
+		for (int i = 0; i < 100; i ++) {
 			for (String sort : sorts) {
 				DataRequest dr = new DataRequest(
 					sort,
@@ -137,5 +137,4 @@ class AlgoApplicationTests {
 			}
 		}	
 	}
-	**/
 }
