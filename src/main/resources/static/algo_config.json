@@ -8,5 +8,15 @@
     "name": "Insertion Sort",
     "complexity": "O(n^2)",
     "description": "about insertion sort"
+  },
+  {
+    "name": "Linear Sort",
+    "complexity": "O(n)",
+    "description": "about linear sort"
+  },
+  {
+    "name": "Quick Sort",
+    "complexity": "O(n Log n)",
+    "description": "about quick sort"
   }
 ]

@@ -16,8 +16,6 @@ public class DataController {
     @PostMapping("sort")
     public ResponseEntity<DataResponse> sortData(@RequestBody DataRequest dataRequest) {
         DataResponse response = service.sortWithAlgorithm(dataRequest);
-        System.out.println(dataRequest);
-        System.out.println(response);
         return ResponseEntity.ok(response);
     }
 
